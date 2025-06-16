@@ -6,7 +6,7 @@ function App() {
 
   // Check login status on mount
   useEffect(() => {
-    fetch("https://localhost:7000/api/auth/me", {
+    fetch("https://backend-user-test-production.up.railway.app/api/auth/me", {
       credentials: "include",
     })
       .then((res) => (res.ok ? res.json() : null))
@@ -17,7 +17,8 @@ function App() {
 
   const handleLogin = () => {
     // Redirect to backend Google login
-    window.location.href = "https://localhost:7000/api/auth/login-google";
+    window.location.href =
+      "https://backend-user-test-production.up.railway.app/api/auth/login-google";
   };
 
   return (
