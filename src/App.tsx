@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  // Check login status on mount
   useEffect(() => {
-    fetch("https://backend-user-test-production.up.railway.app/api/auth/me", {
+    fetch(`${BACKEND_URL}/api/auth/me`, {
       credentials: "include",
     })
       .then((res) => (res.ok ? res.json() : null))
@@ -16,9 +17,7 @@ function App() {
   }, []);
 
   const handleLogin = () => {
-    // Redirect to backend Google login
-    window.location.href =
-      "https://backend-user-test-production.up.railway.app/api/auth/login-google";
+    window.location.href = `${BACKEND_URL}/api/auth/login-google`;
   };
 
   return (
